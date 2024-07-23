@@ -14,10 +14,12 @@
             
         }
         if(str==s){
-            document.write("Palindrome");
+            // document.write("Palindrome");
+            document.getElementById("res").innerHTML="Palindrome";
         }
         else{
-            document.write("Not Palindrome");
+            // document.write("Not Palindrome");
+            document.getElementById("res").innerHTML="Not Palindrome";
         }
     }
     </script>
@@ -25,6 +27,7 @@
 <body>
     Enter the string <input type="text" id="a">
     <button onclick="Palindrome()">check</button>
+    <div id="res"></div>
     
 </body>
 </html>
