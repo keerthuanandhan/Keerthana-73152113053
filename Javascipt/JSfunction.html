@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myfunction(){
+            document.write("<b>Javascript function Example</b>");
+        }
+        function addition(a,b){
+            let sum=a+b;
+            document.write("<b> Sum: "+sum);
+        }
+        function subtraction(a,b){
+            let sub=a-b;
+            document.write("<b> Sub: " +sub);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="myfunction()">Click Me</button>
+    <br>
+    <button onclick="addition(10,20)">Addition</button>
+    <br>
+    <button onclick="subtraction(30,20)">subtraction</button>
+</body>
+</html>
