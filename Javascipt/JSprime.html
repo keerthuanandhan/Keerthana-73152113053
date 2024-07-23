@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSprimenumber</title>
+    <script>
+       function primeno(){
+    let n = parseInt(document.getElementById("n1").value);
+    let count = 0;
+    let ans = "";
+    for(let i = 2; i < n; i++){
+        if(n % i == 0){
+            count++;
+        }
+    }
+    if(count === 0 && n > 1){
+        document.write("Prime");
+    } else {
+        document.write("Not Prime");
+    }
+}
+
+    </script>
+</head>
+<body>
+    Enter the number <input type="text" id="n1">
+    <br>
+    <button onclick="primeno()">check</button>
+    <div id="result"></div>
+</body>
+</html>
