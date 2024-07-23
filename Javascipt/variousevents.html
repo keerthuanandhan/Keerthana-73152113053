@@ -1,0 +1,28 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fact(){
+            let a=parseInt(document.getElementById("n").value);
+            let fact=1;
+            for(let i=1;i<=a;i++){
+                fact=fact*i;
+            }
+            document.getElementById("result").innerHTML=fact;
+        }
+        function func1(){
+            alert("click here!");
+        }
+    </script>
+</head>
+<body>
+    Enter the number<input type="text" id="n" value="Enter the number" onfocus="this.value='' " onblur="fact()">
+    
+    <br>
+    <div id="result"></div>
+    <button onclick="func1()">Click Me</button>
+</body>
+</html>

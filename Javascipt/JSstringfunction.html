@@ -5,10 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>String function</title>
     <script>
-        
+        function string(){
+           let s1=document.getElementById("n1").value;
+           let s2=document.getElementById("n2").value;
+           //let length=s1.length;
+           //document.getElementById("result").innerHTML=length;
+           //let char=s1.charAt(0);
+           //document.getElementById("result").innerHTML=char;
+           //let slice=s1.slice(1,4);
+           //document.getElementById("result").innerHTML=slice;
+           //let substring=s1.substring(1,6);
+           //document.getElementById("result").innerHTML=substring;
+           //let substr=s1.substr(3,4);
+           //let upper=s1.toUpperCase();
+           //let lower=s1.toLowerCase();
+           //let concat=s1.concat(s2);
+          // let trim=s1.trim();
+           //let trimstart=s1.trimStart();
+           //let trimend=s1.trimEnd();
+          // let replace=s1.replace("hi","hello");
+           //let replaceAll=s1.replaceAll('e','o');
+           //let split=s1.split(",");
+
+           document.write(s1.length);
+           document.write("<br>");
+           document.write(s1.charAt(0));
+           document.write("<br>");
+           document.write(s1.slice(1,4));
+           document.write("<br>");
+           document.write(s1.substring(1,6));
+           document.write("<br>");
+           document.write(s1.substr(3,4));
+           document.write("<br>");
+           document.write(s1.toUpperCase());
+           document.write("<br>");
+           document.write(s2.toLowerCase());
+           document.write("<br>");
+           document.write(s1.concat(" ",s2));
+           document.write("<br>");
+           document.write(s1.trim());
+           document.write("<br>");
+           document.write(s1.trimStart());
+           document.write("<br>");
+           document.write(s1.trimEnd());
+           document.write("<br>");
+           document.write(s1.replace("hello","hi"));
+           document.write("<br>");
+           document.write(s1.replaceAll('e','o'));
+           document.write("<br>");
+           document.write(s1.split(","));
+        }
     </script>
 </head>
 <body>
-    
+    Enter the string1 <input type="text" id="n1">
+    <br><br>
+    Enter the string2 <input input="text" id="n2">
+    <br><br>
+    <button onclick="string()">Click Me</button>
+    <div id="result"></div>
 </body>
 </html>
