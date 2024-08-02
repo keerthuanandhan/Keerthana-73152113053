@@ -10,5 +10,11 @@ export class CalculatorService {
   getSubtraction(a:number,b:number){
     return a-b;
   }
-  constructor() { }
+  getfactorial(a:number){
+    let fact=1;
+    for(let i=1;i<=a;i++){
+      fact=fact*i;
+    }
+    return fact;
+  }
 }
