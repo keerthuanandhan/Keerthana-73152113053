@@ -1,0 +1,270 @@
+SQL> create table emp (eid number(5), ename varchar(10), esalary number(10), dno number(5));
+
+Table created.
+
+SQL> insert into emp values(101,'valan', 7000,10);
+
+1 row created.
+
+SQL> insert into emp values(102,'Raj', 3000,10);
+
+1 row created.
+
+SQL> insert into emp values(103,'kumar', 4000,20);
+
+1 row created.
+
+SQL> insert into emp values(104,'vijay', 5000,20);
+
+1 row created.
+
+SQL> insert into emp values(105,'arun', 6000,30);
+
+1 row created.
+
+SQL> insert into emp column(eid,esalary,dno)values(106,3000,30);
+insert into emp column(eid,esalary,dno)values(106,3000,30)
+                *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword
+
+
+SQL> insert into emp (eid,esalary,dno)values(106,3000,30);
+
+1 row created.
+
+SQL> select * from emp;
+
+       EID ENAME         ESALARY        DNO
+---------- ---------- ---------- ----------
+       101 valan            7000         10
+       102 Raj              3000         10
+       103 kumar            4000         20
+       104 vijay            5000         20
+       105 arun             6000         30
+       106                  3000         30
+
+6 rows selected.
+
+SQL> select dno, count(*) from emp group by dno;
+
+       DNO   COUNT(*)
+---------- ----------
+        30          2
+        20          2
+        10          2
+
+SQL> select dno, count(*), sum(esalary), avg(esalary), min(esalary), max(esalary) from emp group by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        30          2         9000         4500         3000         6000
+        20          2         9000         4500         4000         5000
+        10          2        10000         5000         3000         7000
+
+SQL> select dno, count(*), sum(esalary), avg(esalary), min(esalary), max(esalary) from emp group by dno order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          2        10000         5000         3000         7000
+        20          2         9000         4500         4000         5000
+        30          2         9000         4500         3000         6000
+
+SQL> select dno, count(*), sum(esalary), avg(esalary), min(esalary), max(esalary) from emp group by dno having max(esalary)>3000 order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          2        10000         5000         3000         7000
+        20          2         9000         4500         4000         5000
+        30          2         9000         4500         3000         6000
+
+SQL> create table student(regno number(5) primary key, sname varchar(20) not null, semail varchar(20) unique, sage number(3) check(sage>0), slocation varchar(20) default 'Erode');
+
+Table created.
+
+SQL> insert into student values.com(101,'anitha','anithaemail.com',30,'');
+insert into student values.com(101,'anitha','anithaemail.com',30,'')
+                          *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> insert into student values(101,'anitha','anithaemail.com',30,'');
+
+1 row created.
+
+SQL> insert into student values(101,'anu','aniaemail.com',30,'goa');
+insert into student values(101,'anu','aniaemail.com',30,'goa')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C006999) violated
+
+
+SQL> insert into student values(102,'anu','aniaemail.com',0,'goa');
+insert into student values(102,'anu','aniaemail.com',0,'goa')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.SYS_C006998) violated
+
+
+SQL> insert into student values(regno, sname,semail, sage) values(501,'keerthana','keerthana@gmail.com',21);
+insert into student values(regno, sname,semail, sage) values(501,'keerthana','keerthana@gmail.com',21)
+                                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into student (regno, sname,semail, sage) values(501,'keerthana','keerthana@gmail.com',21);
+
+1 row created.
+
+SQL> select * from student;
+
+     REGNO SNAME                SEMAIL                     SAGE
+---------- -------------------- -------------------- ----------
+SLOCATION
+--------------------
+       101 anitha               anithaemail.com              30
+
+
+       501 keerthana            keerthana@gmail.com          21
+Erode
+
+
+SQL> create table department(dno number(5) primary key, dname varchar(20));
+
+Table created.
+
+SQL> create table employee(eid number(5) primary key, ename varchar(20), esalary number(5), dno number(5), foreign key(dno) reference department(dno));
+create table employee(eid number(5) primary key, ename varchar(20), esalary number(5), dno number(5), foreign key(dno) reference department(dno))
+                                                                                                                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> create table employee(eid number(5) primary key, ename varchar(20), esalary number(5), dno number(5), foreign key(dno) references department(dno));
+
+Table created.
+
+SQL> insert into employee values(101, 'josika',2000,10);
+insert into employee values(101, 'josika',2000,10)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SYSTEM.SYS_C007003) violated - parent key not
+found
+
+
+SQL> insert into department(10,'CSE');
+insert into department(10,'CSE')
+                       *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into department values(10,'CSE');
+
+1 row created.
+
+SQL> select * from department;
+
+       DNO DNAME
+---------- --------------------
+        10 CSE
+
+SQL> insert into employee values(101, 'josika',2000,10);
+
+1 row created.
+
+SQL> select * from employee;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 josika                     2000         10
+
+SQL> create view myview as select * from emp where dno=10;
+
+View created.
+
+SQL> select * from myview;
+
+       EID ENAME         ESALARY        DNO
+---------- ---------- ---------- ----------
+       101 valan            7000         10
+       102 Raj              3000         10
+
+SQL> update emp set dno=20 where eid=101;
+
+1 row updated.
+
+SQL> select * from myview;
+
+       EID ENAME         ESALARY        DNO
+---------- ---------- ---------- ----------
+       102 Raj              3000         10
+
+SQL> drop table myview;
+drop table myview
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> drop view myview;
+
+View dropped.
+
+SQL> select eid, ename, from emp;
+select eid, ename, from emp
+                   *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select eid, ename from emp;
+
+       EID ENAME
+---------- ----------
+       101 valan
+       102 Raj
+       103 kumar
+       104 vijay
+       105 arun
+       106
+
+6 rows selected.
+
+SQL> select eid as "Employee_id", ename "Employee_name", from emp;
+select eid as "Employee_id", ename "Employee_name", from emp
+                                                    *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select eid as "Employee_id", ename "Employee_name" from emp;
+
+Employee_id Employee_n
+----------- ----------
+        101 valan
+        102 Raj
+        103 kumar
+        104 vijay
+        105 arun
+        106
+
+6 rows selected.
+
+SQL> select dno, count(*) from emp group by dno;
+
+       DNO   COUNT(*)
+---------- ----------
+        30          2
+        20          3
+        10          1
+
+SQL> select dno, count(*) as "Total no of Employees" from emp group by dno;
+
+       DNO Total no of Employees
+---------- ---------------------
+        30                     2
+        20                     3
+        10                     1
