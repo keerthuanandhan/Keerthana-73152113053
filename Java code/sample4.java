@@ -1,28 +1,37 @@
-package Training;
+package Lab;
 import java.util.*;
-class A{
-	int a=10;
-	A(String name){
-		System.out.println("Welcome " +name);
+class Animals2{
+	final int n=20;
+	void move() {
+		System.out.println("Animals are moving");
 	}
-	void myMethod1() {
-		System.out.println("I am super class method");
+	void eat() {
+		System.out.println("Animals are eating");
 	}
 }
-class B extends A{
-	B(){
-		super("Keerthana");
+class Dog3 extends Animals2{
+	
+	void move() {
+		System.out.println("Dog will walk");
 	}
-	void myMethod2() {
-		System.out.println("Super class variable: " +super.a);
+	void eat() {
+		System.out.println("Dog will eat chicken");
+	}
+}
+final class cat{
+	final void meow() {
+		System.out.println("Meow");
 	}
 }
 public class sample4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        B obj=new B();
-        obj.myMethod2();
+        Animals2 animal;
+        animal=new Dog3();  //DMD
+        animal.move();
+        animal.eat();
+        System.out.println(animal.n);
 	}
 
 }

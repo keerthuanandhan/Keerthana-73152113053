@@ -1,40 +1,32 @@
-package Training;
+package Lab;
 import java.util.*;
-class Vehicles{
-	void noOfEngine() {
-		System.out.println("I have one Engine");
+class Animals1{
+	int n=20;
+	void move() {
+		System.out.println("Animals are moving");
+	}
+	void eat() {
+		System.out.println("Animals are eating");
 	}
 }
-class TwoWheeler1 extends Vehicles{
-	void noOfWheeles() {
-		System.out.println("I have two wheeler");
+class Dog2 extends Animals1{
+	int n=20;
+	void move() {
+		System.out.println("Dog will walk");
+	}
+	void eat() {
+		System.out.println("Dog will eat chicken");
 	}
 }
-class Bike2 extends TwoWheeler1{
-	void brandName() {
-		System.out.println("Brand name is Honda");
-	}
-}
-class Scooty extends TwoWheeler1{
-	void brandname() {
-		System.out.println("Brand name in Activa");
-	}
-}
-	
 public class sample3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        Bike2 b=new Bike2();
-        b.noOfEngine();
-        b.noOfWheeles();
-        b.brandName();
-        
-        Scooty s=new Scooty();
-        s.noOfEngine();
-        s.noOfWheeles();
-        s.brandname();
+        Animals1 animal;
+        animal=new Dog2();  //DMD
+        animal.move();
+        animal.eat();
+        System.out.println(animal.n);
 	}
 
 }
-
